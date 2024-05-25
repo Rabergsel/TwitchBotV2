@@ -26,7 +26,7 @@ namespace TwitchBotV2
             Globals.LoadSettings();
             Globals.ReinitializeAPI();
             UpdateConnectionMessages();
-
+            UpdateFunctionalityTable();
             if(Globals.Settings.DarkMode)
             {
                 Background = Brushes.DarkGray;
@@ -67,8 +67,16 @@ namespace TwitchBotV2
 
         private Brush GetColorFromBool(bool value)
         {
-            if (value) return Brushes.Green;
-            else return Brushes.Red;
+            if (Globals.Settings.DarkMode)
+            {
+                if (value) return Brushes.DarkGreen;
+                else return Brushes.DarkRed;
+            }
+            else
+            {
+                if (value) return Brushes.Green;
+                else return Brushes.Red;
+            }
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -81,15 +89,12 @@ namespace TwitchBotV2
         {
             Globals.Settings.TTS = !Globals.Settings.TTS;
             Globals.SaveSettings();
+            UpdateFunctionalityTable();
+        }
 
-            if(Globals.Settings.TTS)
-            {
-                TTS.Background = Brushes.Green;
-            }
-            else
-            {
-                TTS.Background= Brushes.Red;
-            }
+        private void UpdateFunctionalityTable()
+        {
+            TTS.Background = GetColorFromBool(Globals.Settings.TTS);
         }
 
         private void DarkModeToggle_Click(object sender, RoutedEventArgs e)
@@ -107,8 +112,9 @@ namespace TwitchBotV2
                 this.Background = Brushes.WhiteSmoke;
                 DarkModeToggle.Header = "Dark Mode";
             }
-            
 
+            UpdateConnectionMessages();
+            UpdateFunctionalityTable();
         }
 
         private void Window_GotFocus(object sender, RoutedEventArgs e)

@@ -64,5 +64,12 @@ namespace TwitchBotV2
             Globals.Settings.UserName = Username.Text;
             Globals.SaveSettings();
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Globals.SaveSettings();
+            Globals.ReinitializeAPI();
+            Close();
+        }
     }
 }
