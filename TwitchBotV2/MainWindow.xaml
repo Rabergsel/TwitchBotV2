@@ -60,7 +60,7 @@
                     <RowDefinition Height="50"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Label Name="TTS" Content="TTS" Background="Green" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="22" MouseDoubleClick="TTS_MouseDoubleClick"></Label>
-                <Button Name="TTSSettingsButton" Grid.Row="1" Background="Green" Content="TTS Settings" BorderThickness="5"></Button>
+                <Button Name="TTSSettingsButton" Grid.Row="1" Background="Green" Content="TTS Settings" BorderThickness="5" Click="TTSSettingsButton_Click"></Button>
             </Grid>
             
         </Grid>

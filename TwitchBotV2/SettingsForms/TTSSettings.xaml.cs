@@ -23,5 +23,12 @@ namespace TwitchBotV2.SettingsForms
         {
             InitializeComponent();
         }
+
+        private void MinCutoff_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            Globals.Settings.TTSMinCutoff = (int)MinCutoff.Value;
+            Globals.SaveSettings();
+            MinLabel.Content = Globals.Settings.TTSMinCutoff + " characters";
+        }
     }
 }

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TwitchBotV2.SettingsForms;
 
 namespace TwitchBotV2
 {
@@ -121,6 +122,12 @@ namespace TwitchBotV2
         private void Window_GotFocus(object sender, RoutedEventArgs e)
         {
             UpdateConnectionMessages();
+        }
+
+        private void TTSSettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            var tts = new TTSSettings();
+            tts.ShowDialog();
         }
     }
 }
