@@ -30,5 +30,36 @@ namespace TwitchBotV2.SettingsForms
             Globals.SaveSettings();
             MinLabel.Content = Globals.Settings.TTSMinCutoff + " characters";
         }
+
+        private void MaxCutoff_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            Globals.Settings.TTSMaxCutoff = (int)MaxCutoff.Value;
+            Globals.SaveSettings();
+
+
+        }
+
+        private void TTSall_Checked(object sender, RoutedEventArgs e)
+        {
+            if (TTSall.IsChecked == true) Globals.Settings.TTSEveryone = true;
+            else Globals.Settings.TTSEveryone = false;
+
+            Globals.SaveSettings();
+
+        }
+
+        private void TTSmod_Checked(object sender, RoutedEventArgs e)
+        {
+            if (TTSmod.IsChecked == true) Globals.Settings.TTSMod = true;
+            else Globals.Settings.TTSMod = false;
+            Globals.SaveSettings();
+        }
+
+        private void TTSvip_Checked(object sender, RoutedEventArgs e)
+        {
+            if (TTSvip.IsChecked == true) Globals.Settings.TTSVIP = true;
+            else Globals.Settings.TTSVIP = false;
+            Globals.SaveSettings();
+        }
     }
 }

@@ -28,14 +28,19 @@ namespace TwitchBotV2.BotEvents
             {
                 if(Globals.Settings.TTS)
                 {
+                    if(!((e.ChatMessage.IsModerator & Globals.Settings.TTSMod)||(e.ChatMessage.IsVip & Globals.Settings.TTSVIP)))
+                    {
+                        return;
+                    }
+
                     string textToSay = "New Message";
-                    if (e.ChatMessage.Message.Length<2)
+                    if (e.ChatMessage.Message.Length<Globals.Settings.TTSMinCutoff)
                     {
                         
                     }
-                    else if(e.ChatMessage.Message.Length>90)
+                    else if(e.ChatMessage.Message.Length>Globals.Settings.TTSMaxCutoff)
                     {
-                        textToSay = e.ChatMessage.Username + ": " + e.ChatMessage.Message.Substring(0, 90) + "... and so on";
+                        textToSay = e.ChatMessage.Username + ": " + e.ChatMessage.Message.Substring(0, Globals.Settings.TTSMaxCutoff) + "... and so on";
                     }
                     else
                     {

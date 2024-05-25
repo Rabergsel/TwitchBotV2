@@ -35,6 +35,31 @@
             <Label Grid.Row="1" Content="TTS Minimum Length"></Label>
             <Label Grid.Row="1" Grid.Column="1" Content="0 Characters" Name="MinLabel"></Label>
         </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Slider Grid.Row="0" Name="MaxCutoff" Value="100" Minimum="60" Maximum="300" Grid.ColumnSpan="2" ValueChanged="MaxCutoff_ValueChanged"></Slider>
+            <Label Grid.Row="1" Content="TTS Maximum Length" Name="Max"></Label>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <CheckBox Name="TTSall" Content="TTS for everyone" VerticalContentAlignment="Center" FontSize="15" Checked="TTSall_Checked"></CheckBox>
+            <CheckBox Name="TTSmod" Grid.Row="1" Content="TTS for moderators" VerticalContentAlignment="Center" FontSize="15" Checked="TTSmod_Checked"></CheckBox>
+            <CheckBox Name="TTSvip" Grid.Row="2" Content="TTS for VIPs" VerticalContentAlignment="Center" FontSize="15" Checked="TTSvip_Checked"></CheckBox>
+        </Grid>
         
     </Grid>
 </Window>
