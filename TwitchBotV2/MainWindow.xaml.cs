@@ -25,6 +25,50 @@ namespace TwitchBotV2
             InitializeComponent();
             Globals.LoadSettings();
             Globals.ReinitializeAPI();
+            UpdateConnectionMessages();
+
+            if(Globals.Settings.DarkMode)
+            {
+                Background = Brushes.DarkGray;
+                DarkModeToggle.Header = "Light Mode";
+            }
+
+        }
+
+        private void UpdateConnectionMessages()
+        {
+
+            ConnectedHelix.Foreground = GetColorFromBool(Globals.ConnectedToHelix);
+            ConnectedIRC.Foreground = GetColorFromBool(Globals.ConnectedToIRC);
+            ConnectedUser.Foreground = GetColorFromBool(Globals.ConnectedToIRC);
+
+            if (Globals.ConnectedToHelix) ConnectedHelix.Content = "Connected to Helix";
+            else ConnectedHelix.Content = "Not connected to Helix";
+
+            if (Globals.ConnectedToIRC) ConnectedIRC.Content = "Connected to Chat";
+            else ConnectedHelix.Content = "Not connected to Helix";
+
+            if(Globals.ConnectedToIRC)
+            {
+                if(Globals.Settings.UserName != "") ConnectedUser.Content = "Connected to: " + Globals.Settings.UserName;
+                else
+                {
+                    ConnectedUser.Content = "No user specified";
+                    ConnectedUser.Foreground = Brushes.DarkGray;
+                }
+            }
+            else
+            {
+                ConnectedUser.Content = "Not connected to a user";
+            }
+
+
+        }
+
+        private Brush GetColorFromBool(bool value)
+        {
+            if (value) return Brushes.Green;
+            else return Brushes.Red;
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -46,6 +90,30 @@ namespace TwitchBotV2
             {
                 TTS.Background= Brushes.Red;
             }
+        }
+
+        private void DarkModeToggle_Click(object sender, RoutedEventArgs e)
+        {
+            Globals.Settings.DarkMode = !Globals.Settings.DarkMode;
+            Globals.SaveSettings();
+
+            if(Globals.Settings.DarkMode)
+            {
+                this.Background = Brushes.DarkGray;
+                DarkModeToggle.Header = "Light Mode";
+            }
+            else
+            {
+                this.Background = Brushes.WhiteSmoke;
+                DarkModeToggle.Header = "Dark Mode";
+            }
+            
+
+        }
+
+        private void Window_GotFocus(object sender, RoutedEventArgs e)
+        {
+            UpdateConnectionMessages();
         }
     }
 }

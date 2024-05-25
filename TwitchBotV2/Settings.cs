@@ -14,6 +14,8 @@ namespace TwitchBotV2
         public string OAuthToken { get; set; } = "";
         public string UserName { get; set; } = "";
 
+        public bool DarkMode { get; set; } = true;
+
         public bool TTS { get; set; } = true;
 
     }

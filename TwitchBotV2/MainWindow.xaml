@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TwitchBotV2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" GotFocus="Window_GotFocus">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"></RowDefinition>
@@ -18,6 +18,7 @@
 
         <Menu>
             <MenuItem Header="Connection" Click="MenuItem_Click"></MenuItem>
+            <MenuItem Header="Dark Mode" Name="DarkModeToggle" Click="DarkModeToggle_Click"></MenuItem>
         </Menu>
 
         <Grid Grid.Row="1">
