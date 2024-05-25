@@ -95,6 +95,7 @@ namespace TwitchBotV2
         private void UpdateFunctionalityTable()
         {
             TTS.Background = GetColorFromBool(Globals.Settings.TTS);
+            TTSSettingsButton.Background = GetColorFromBool(Globals.Settings.TTS);
         }
 
         private void DarkModeToggle_Click(object sender, RoutedEventArgs e)

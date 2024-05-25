@@ -16,7 +16,17 @@ namespace TwitchBotV2
 
         public bool DarkMode { get; set; } = true;
 
+
         public bool TTS { get; set; } = true;
+
+
+        public int TTSMinCutoff { get; set; } = 2;
+        public int TTSMaxCutoff { get; set; } = 100;
+        public bool TTSEveryone { get; set; } = true;
+        public bool TTSMod {  get; set; } = true;
+        public bool TTSVIP { get; set; } = true;
+       
+
 
     }
 }

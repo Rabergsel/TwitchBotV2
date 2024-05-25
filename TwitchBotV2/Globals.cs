@@ -23,6 +23,19 @@ namespace TwitchBotV2
         public static TwitchAPI TwitchAPI = new TwitchAPI();
         public static TwitchClient TwitchClient = new TwitchClient();
 
+        [JsonIgnore]
+        public static JoinedChannel Channel
+        {
+            get
+            {
+                return TwitchClient.JoinedChannels[0];
+            }
+            set
+            {
+
+            }
+        }
+
         public static bool ConnectedToHelix = false;
         public static bool ConnectedToIRC = false;
 
@@ -52,12 +65,16 @@ namespace TwitchBotV2
                 WebSocketClient customClient = new WebSocketClient(clientOptions);
                 TwitchClient = new TwitchClient(customClient);
                 TwitchClient.Initialize(credentials, Settings.UserName);
+                TwitchClient.Connect();
                 ConnectedToIRC = true;
             }
             catch
             {
                 ConnectedToIRC = false;
             }
+
+            BotEvents.RegisterEvents.Register();
+
         }
 
         public static void SaveSettings()
