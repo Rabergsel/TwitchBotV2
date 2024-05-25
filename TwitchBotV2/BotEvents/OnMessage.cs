@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Speech;
 using System.Speech.Synthesis;
 using System.Windows;
+using TwitchLib.Client.Extensions;
 
 namespace TwitchBotV2.BotEvents
 {
@@ -19,6 +20,26 @@ namespace TwitchBotV2.BotEvents
             TTSOutput();
         }
 
+        public static void Filter()
+        {
+            
+            Globals.TwitchClient.OnMessageReceived += async (s, e) =>
+            {
+                foreach(var w in Globals.Settings.FilteredWords)
+                {
+                    if(w.Trim().Length<2)
+                    {
+                        continue;
+                    }
+                    if(e.ChatMessage.Message.ToLower().Contains(w))
+                    {
+                        Globals.TwitchClient.DeleteMessage(Globals.Channel, e.ChatMessage.Id);
+                        return;
+                    }
+                }
+            };
+        }
+
 
         public static void TTSOutput()
         {
@@ -28,19 +49,22 @@ namespace TwitchBotV2.BotEvents
             {
                 if(Globals.Settings.TTS)
                 {
-                    if(!((e.ChatMessage.IsModerator & Globals.Settings.TTSMod)||(e.ChatMessage.IsVip & Globals.Settings.TTSVIP)))
+                    if (!Globals.Settings.TTSEveryone)
                     {
-                        return;
+                        if (!((e.ChatMessage.IsModerator & Globals.Settings.TTSMod) || (e.ChatMessage.IsVip & Globals.Settings.TTSVIP)))
+                        {
+                            return;
+                        }
                     }
 
-                    string textToSay = "New Message";
+                    string textToSay = "";
                     if (e.ChatMessage.Message.Length<Globals.Settings.TTSMinCutoff)
                     {
                         
                     }
                     else if(e.ChatMessage.Message.Length>Globals.Settings.TTSMaxCutoff)
                     {
-                        textToSay = e.ChatMessage.Username + ": " + e.ChatMessage.Message.Substring(0, Globals.Settings.TTSMaxCutoff) + "... and so on";
+                        textToSay = "New long message";
                     }
                     else
                     {

@@ -22,6 +22,14 @@ namespace TwitchBotV2.SettingsForms
         public TTSSettings()
         {
             InitializeComponent();
+            MinCutoff.Value = Globals.Settings.TTSMinCutoff;
+            MaxCutoff.Value = Globals.Settings.TTSMaxCutoff;
+
+            MinLabel.Content = Globals.Settings.TTSMaxCutoff + " characters";
+
+            TTSall.IsChecked = Globals.Settings.TTSEveryone;
+            TTSmod.IsChecked = Globals.Settings.TTSMod;
+            TTSvip.IsChecked = Globals.Settings.TTSVIP;
         }
 
         private void MinCutoff_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)

@@ -162,6 +162,9 @@
     <Compile Include="BotEvents\OnMessage.cs" />
     <Compile Include="BotEvents\RegisterEvents.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="SettingsForms\FilterSettings.xaml.cs">
+      <DependentUpon>FilterSettings.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SettingsForms\TTSSettings.xaml.cs">
       <DependentUpon>TTSSettings.xaml</DependentUpon>
     </Compile>
@@ -185,6 +188,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="SettingsForms\FilterSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SettingsForms\TTSSettings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -216,6 +223,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Helper\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

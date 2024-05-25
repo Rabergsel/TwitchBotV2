@@ -14,11 +14,13 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
         </Grid.RowDefinitions>
 
         <Menu>
             <MenuItem Header="Connection" Click="MenuItem_Click"></MenuItem>
             <MenuItem Header="Dark Mode" Name="DarkModeToggle" Click="DarkModeToggle_Click"></MenuItem>
+            <MenuItem Header="Info" Name="Info" Click="Info_Click"></MenuItem>
         </Menu>
 
         <Grid Grid.Row="1">
@@ -37,8 +39,14 @@
 
         </Grid>
 
-        <Label Grid.Row="3" Content="Functionalities" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="40"></Label>
-
+        <Grid Grid.Row="3">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition MaxHeight="30"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Content="Functionalities" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" FontSize="40"></Label>
+            <Label Grid.Row="1" Content="Double click fields to toggle, beware the buttons. Green means active, Red means inactive, Grey means deactivated, Orange means error"></Label>
+        </Grid>
         <Grid Grid.RowSpan="2" Grid.Row="4">
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
@@ -59,11 +67,20 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition Height="50"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Label Name="TTS" Content="TTS" Background="Green" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="22" MouseDoubleClick="TTS_MouseDoubleClick"></Label>
+                <Label Name="TTS" Content="TTS" Background="Green" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="22" MouseDoubleClick="TTS_MouseDoubleClick" BorderThickness="2"></Label>
                 <Button Name="TTSSettingsButton" Grid.Row="1" Background="Green" Content="TTS Settings" BorderThickness="5" Click="TTSSettingsButton_Click"></Button>
             </Grid>
-            
+
+            <Grid Name="FilterGrid" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label Name="Filter" Content="Chat Filter" Background="Green" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="22"  BorderThickness="2" MouseDoubleClick="Filter_MouseDoubleClick"></Label>
+                <Button Name="FilterSettingsButton" Grid.Row="1" Background="Green" Content="Filter Settings" BorderThickness="5" Click="FilterSettingsButton_Click" ></Button>
+            </Grid>
+
         </Grid>
-        
+        <Label Grid.Row="6" Content="Bot by Raphael Raberger        Report Bugs immediatly       ©2024 and on by Raphael Raberger, yet open source and changeable as you want" MouseDown="Label_MouseDown"></Label>        
     </Grid>
 </Window>

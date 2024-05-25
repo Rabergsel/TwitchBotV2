@@ -97,6 +97,9 @@ namespace TwitchBotV2
         {
             TTS.Background = GetColorFromBool(Globals.Settings.TTS);
             TTSSettingsButton.Background = GetColorFromBool(Globals.Settings.TTS);
+
+            Filter.Background = GetColorFromBool(Globals.Settings.ChatFilter);
+            FilterSettingsButton.Background = GetColorFromBool((bool)Globals.Settings.ChatFilter);
         }
 
         private void DarkModeToggle_Click(object sender, RoutedEventArgs e)
@@ -128,6 +131,30 @@ namespace TwitchBotV2
         {
             var tts = new TTSSettings();
             tts.ShowDialog();
+        }
+
+        private void FilterSettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            var filtersettings = new FilterSettings();
+            filtersettings.ShowDialog();
+        }
+
+        private void Filter_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Globals.Settings.ChatFilter = !Globals.Settings.ChatFilter;
+            UpdateFunctionalityTable();
+        }
+
+        private void Label_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("Twitch Bot by Raphael Raberger\nPlease report bugs immediatly\n\nDo you want to help me? Go and buy me a cofee:\n https://buymeacoffee.com/raphaelraberger \n\nGithub: https://github.com/Rabergsel \nTwitter/X: https://x.com/RabergerRaphael\n\n©2024, yet open source: Change it as you want, but please cite me",
+                "Info");
+        }
+
+        private void Info_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Twitch Bot by Raphael Raberger\nPlease report bugs immediatly\n\nDo you want to help me? Go and buy me a cofee:\n https://buymeacoffee.com/raphaelraberger \n\nGithub: https://github.com/Rabergsel \nTwitter/X: https://x.com/RabergerRaphael\n\n©2024, yet open source: Change it as you want, but please cite me",
+                "Info");
         }
     }
 }

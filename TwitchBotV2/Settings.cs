@@ -25,8 +25,10 @@ namespace TwitchBotV2
         public bool TTSEveryone { get; set; } = true;
         public bool TTSMod {  get; set; } = true;
         public bool TTSVIP { get; set; } = true;
-       
 
+
+        public bool ChatFilter { get; set; } = true;
+        public List<string> FilteredWords { get; set; } = new List<string>();
 
     }
 }
