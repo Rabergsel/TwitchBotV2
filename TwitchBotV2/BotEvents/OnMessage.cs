@@ -18,6 +18,8 @@ namespace TwitchBotV2.BotEvents
         public static void RegisterEvents()
         {
             TTSOutput();
+            Filter();
+            Log();
         }
 
         public static void Filter()
@@ -40,6 +42,16 @@ namespace TwitchBotV2.BotEvents
             };
         }
 
+        public static void Log()
+        {
+            Globals.TwitchClient.OnMessageReceived += async (s, e) =>
+            {
+                if(Globals.Settings.Log)
+                {
+                    Functions.Logger.Log("MSG", e.ChatMessage.Username + ": " + e.ChatMessage.Message);
+                }
+            };
+        }
 
         public static void TTSOutput()
         {

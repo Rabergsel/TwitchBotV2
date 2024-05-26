@@ -84,7 +84,14 @@ namespace TwitchBotV2
 
         public static void LoadSettings()
         {
-            Settings = System.Text.Json.JsonSerializer.Deserialize<Settings>(File.ReadAllText("settings.json"));
+            try
+            {
+                Settings = System.Text.Json.JsonSerializer.Deserialize<Settings>(File.ReadAllText("settings.json"));
+            }
+            catch
+            {
+                Settings = new Settings();
+            }
         }
 
     }

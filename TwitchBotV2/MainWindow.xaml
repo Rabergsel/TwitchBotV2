@@ -80,6 +80,24 @@
                 <Button Name="FilterSettingsButton" Grid.Row="1" Background="Green" Content="Filter Settings" BorderThickness="5" Click="FilterSettingsButton_Click" ></Button>
             </Grid>
 
+            <Grid Name="CmdGrid" Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label Name="Commands" Content="Chat Commands" Background="Green" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="22"  BorderThickness="2" ></Label>
+                <Button Name="CommandSettingsButton" Grid.Row="1" Background="Green" Content="Command Settings" BorderThickness="5"  ></Button>
+            </Grid>
+
+            <Grid Name="LogGrid" Grid.Column="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label Name="Log" Content="Logging" Background="Green" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="22"  BorderThickness="2"></Label>
+                <Button Name="LogSettingsButton" Grid.Row="1" Background="Green" Content="Log Settings" BorderThickness="5"></Button>
+            </Grid>
+
         </Grid>
         <Label Grid.Row="6" Content="Bot by Raphael Raberger        Report Bugs immediatly       ©2024 and on by Raphael Raberger, yet open source and changeable as you want" MouseDown="Label_MouseDown"></Label>        
     </Grid>

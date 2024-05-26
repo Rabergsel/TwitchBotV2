@@ -30,5 +30,9 @@ namespace TwitchBotV2
         public bool ChatFilter { get; set; } = true;
         public List<string> FilteredWords { get; set; } = new List<string>();
 
+
+        public bool Log { get;set; } = true;
+        public string LoggingDirectory { get; set; } = "";
+
     }
 }
