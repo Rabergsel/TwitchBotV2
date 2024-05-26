@@ -99,7 +99,13 @@ namespace TwitchBotV2
             TTSSettingsButton.Background = GetColorFromBool(Globals.Settings.TTS);
 
             Filter.Background = GetColorFromBool(Globals.Settings.ChatFilter);
-            FilterSettingsButton.Background = GetColorFromBool((bool)Globals.Settings.ChatFilter);
+            FilterSettingsButton.Background = GetColorFromBool(Globals.Settings.ChatFilter);
+
+            Log.Background = GetColorFromBool(Globals.Settings.Log);
+            LogSettingsButton.Background = GetColorFromBool(Globals.Settings.Log);
+
+            Commands.Background = GetColorFromBool(Globals.Settings.ChatCommands);
+            CommandSettingsButton.Background = GetColorFromBool(Globals.Settings.ChatCommands);
         }
 
         private void DarkModeToggle_Click(object sender, RoutedEventArgs e)
@@ -155,6 +161,24 @@ namespace TwitchBotV2
         {
             MessageBox.Show("Twitch Bot by Raphael Raberger\nPlease report bugs immediatly\n\nDo you want to help me? Go and buy me a cofee:\n https://buymeacoffee.com/raphaelraberger \n\nGithub: https://github.com/Rabergsel \nTwitter/X: https://x.com/RabergerRaphael\n\n©2024, yet open source: Change it as you want, but please cite me",
                 "Info");
+        }
+
+        private void Log_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Globals.Settings.Log = !Globals.Settings.Log;
+            UpdateFunctionalityTable();
+        }
+
+        private void Commands_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Globals.Settings.ChatCommands = !Globals.Settings.ChatCommands;
+            UpdateFunctionalityTable();
+        }
+
+        private void CommandSettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            var chatcmd = new ChatCommands();
+            chatcmd.ShowDialog();
         }
     }
 }

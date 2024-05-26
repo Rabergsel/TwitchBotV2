@@ -85,8 +85,8 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition Height="50"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Label Name="Commands" Content="Chat Commands" Background="Green" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="22"  BorderThickness="2" ></Label>
-                <Button Name="CommandSettingsButton" Grid.Row="1" Background="Green" Content="Command Settings" BorderThickness="5"  ></Button>
+                <Label Name="Commands" Content="Chat Commands" Background="Green" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="22"  BorderThickness="2" MouseDoubleClick="Commands_MouseDoubleClick" ></Label>
+                <Button Name="CommandSettingsButton" Grid.Row="1" Background="Green" Content="Command Settings" BorderThickness="5" Click="CommandSettingsButton_Click"  ></Button>
             </Grid>
 
             <Grid Name="LogGrid" Grid.Column="3">
@@ -94,7 +94,7 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition Height="50"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Label Name="Log" Content="Logging" Background="Green" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="22"  BorderThickness="2"></Label>
+                <Label Name="Log" Content="Logging" Background="Green" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="22"  BorderThickness="2" MouseDoubleClick="Log_MouseDoubleClick"></Label>
                 <Button Name="LogSettingsButton" Grid.Row="1" Background="Green" Content="Log Settings" BorderThickness="5"></Button>
             </Grid>
 

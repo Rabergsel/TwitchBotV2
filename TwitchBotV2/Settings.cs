@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using TwitchBotV2.Models;
+
 namespace TwitchBotV2
 {
     public class Settings
@@ -33,6 +35,11 @@ namespace TwitchBotV2
 
         public bool Log { get;set; } = true;
         public string LoggingDirectory { get; set; } = "";
+
+        
+        public bool ChatCommands { get; set; } = true;
+        public List<ChatCommand> Commands { get; set; } = new List<ChatCommand>();
+        public string Prefix { get; set; } = "";
 
     }
 }

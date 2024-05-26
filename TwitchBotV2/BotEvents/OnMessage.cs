@@ -20,6 +20,7 @@ namespace TwitchBotV2.BotEvents
             TTSOutput();
             Filter();
             Log();
+            ChatCommands();
         }
 
         public static void Filter()
@@ -49,6 +50,29 @@ namespace TwitchBotV2.BotEvents
                 if(Globals.Settings.Log)
                 {
                     Functions.Logger.Log("MSG", e.ChatMessage.Username + ": " + e.ChatMessage.Message);
+                }
+            };
+        }
+
+        public static void ChatCommands()
+        {
+            Globals.TwitchClient.OnMessageReceived += async (s, e) =>
+            {
+                if (!Globals.Settings.ChatCommands) return;
+
+                if(e.ChatMessage.Message.StartsWith(Globals.Settings.Prefix))
+                {
+                    foreach(var command in Globals.Settings.Commands)
+                    {
+                        if(e.ChatMessage.Message.Replace(Globals.Settings.Prefix, "").Trim().Length<2)
+                        {
+                            return;
+                        }
+                        if(command.CommandNames.Contains(e.ChatMessage.Message.Replace(Globals.Settings.Prefix, "").Trim()))
+                        {
+                            command.ExecuteCommand();
+                        }
+                    }
                 }
             };
         }
